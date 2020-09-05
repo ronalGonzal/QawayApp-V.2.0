@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">QawayApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="acercaTitulo">Acerca de la APP QAWAY</string>
+    <string name="acercaapp1">Qaway es un aplicativo móvil que tiene la finalidad de promover,
+        fortalecer y formalizar al sector cultural, mediante la creación de un catálogo virtual de las bondades
+        culturales que produce la región de Cusco.</string>
+    <string name="acercaapp2">Dentro de la App QAWAY usted encontrará las muestras de los productos
+        culturales que existe en la región, videos y fotografías de cómo se desarrolla la
+        cultura en Cusco, un pequeño recorrido de todos los registros de las obras de arte
+        en las 13 provincias, así también podrá encontrar los datos de los artesanos y artistas y
+        todos los impulsores de la cultura Cusco.</string>
+    <string name="ddchvcaTitulo">DDC de Cusco</string>
+    <string name="ddchvcacon1">La Dirección Desconcentrada de Cultura de
+Cusco, es una institución dedicada a
+promover formular, ejecutar y establecer
+estrategias de promoción cultural, fomentar
+toda forma de expresiones artísticas,
+convocar y reconocer el mérito de quienes
+aporten al desarrollo cultural de la nuestra
+región Cusco.</string>
+    <string name="ddchvcacon2">El patrimonio cultural Cusco es uno
+de los propósitos que orientan nuestras
+acciones. Ello no solo con el afán de registrar
+prácticas culturales, sino, principalmente, bajo
+la necesidad de construir y afirmar nuestra
+identidad cultural cusqueña.</string>
+    <string name="museoTitulo">Museo de Sitio de Qoricancha</string>
+    <string name="museocon1">Se trata de un pequeño museo que posee cinco salas donde se explica
+        didácticamente la historia de los antepasados que vivieron en estas tierras, con piezas
+        pre-incas, incas y coloniales, en su mayoría procedentes de las excavaciones efectuadas
+        en el Koricancha (en quechua Qorikancha, patio de oro"), durante el período 1992-1995.</string>
+    <string name="museocon2">Muestra la evolución cronológica de la civilización en el Cusco.
+        Exhibe fragmentos y cerámica del periodo incaico así como muestras de metalurgia,
+        textilería, pintura, escultura, instrumentos de música, etc. También presenta una maqueta
+        de lo que pudo haber sido el Qoricancha. Se observa igualmente réplicas de los objetos
+        encontrados en la excavaciones realizadas en el lugar, muestras de ceramios, piezas líticas,
+        de los periodos pre inca e inca. Posee cinco salas donde se explica didácticamente la
+        historia de nuestros antepasados.</string>
+    <string name="museocon3">El museo expone variadas piezas pre-hispanicas y de arte popular.</string>
+    <string name="museodirecion">Direccion: Av. El Sol s/n (Sótano de la explanada del  Qoricancha) </string>
+    <string name="museoemail">Email: callcenter@culturacusco.gob.pe</string>
+    <string name="mapa_de_cusco">mapa de cusco</string>
+    <string name="nombre_de_patrimonio">Nombre de Patrimonio</string>
+    <string name="descripcion_patrimonio">Descripcion patrimonio</string>
+    <string name="imgdetalle">imgDetalle</string>
+
+</resources>

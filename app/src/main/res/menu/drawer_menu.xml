@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"></item>
+        <item
+            android:id="@+id/acercade"
+            android:icon="@drawable/ic_info"
+            android:title="Acerca de APP QAWAY"></item>
+        <item
+            android:id="@+id/ddccusco"
+            android:icon="@drawable/ic_contact"
+            android:title="DDC de Cusco"></item>
+        <item
+            android:id="@+id/museo"
+            android:icon="@drawable/ic_museum"
+            android:title="Museo Qoricancha"></item>
+    <item
+        android:id="@+id/salir"
+        android:icon="@drawable/ic_close"
+        android:title="Salir"></item>
+
+</menu>

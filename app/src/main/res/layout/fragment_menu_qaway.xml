@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="58dp"
+    tools:context=".Fragments.MenuQawayFragment">
+
+    <TextView
+        android:id="@+id/nomProvinciaS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calca"
+        android:textColor="#F1F1F1"
+        android:textAlignment="center"
+        android:background="#554E4E"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/imgProvinciaS"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+
+        android:contentDescription="imagen provincia"
+        android:src="@drawable/pcalca" />
+
+    <Button
+        android:id="@+id/btnPatrimonios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Patrimonios Culturales" />
+
+    <Button
+        android:id="@+id/btnLiteraturas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Literatura" />
+
+    <Button
+        android:id="@+id/btnArtesanias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Artesania Tradicional" />
+
+    <Button
+        android:id="@+id/btnDanzas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danza" />
+
+    <Button
+        android:id="@+id/btnMusicas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Musica" />
+
+    <Button
+        android:id="@+id/btnLugares"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lugares Turisticos" />
+</LinearLayout>
