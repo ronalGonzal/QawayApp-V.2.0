@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.DetalleArtesaniaFragment"
+    android:paddingTop="58dp">
+
+
+    <TextView
+        android:id="@+id/nomDetArtesano"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Nombre del Artesano"
+        android:textSize="30sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imgDetArtesano"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:contentDescription="@string/imgdetalle"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/desDetArtesano"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/descripcion_patrimonio"
+        android:gravity="center" />
+
+</LinearLayout>
