@@ -13,11 +13,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.qaway.qawayapp.Entidades.Artesania;
 import com.qaway.qawayapp.Entidades.Patrimonio;
+import com.qaway.qawayapp.Entidades.Literatura;
 import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Fragments.AcercadeFragment;
 import com.qaway.qawayapp.Fragments.DdccuscoFragment;
 import com.qaway.qawayapp.Fragments.DetallePatrimonioFragment;
+import com.qaway.qawayapp.Fragments.DetalleLiteraturaFragment;
+import com.qaway.qawayapp.Fragments.DetalleArtesaniaFragment;
 import com.qaway.qawayapp.Fragments.HomeFragment;
 import com.qaway.qawayapp.Fragments.MenuQawayFragment;
 import com.qaway.qawayapp.Fragments.MuseoFragment;
@@ -36,8 +40,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //variables para envio
     DetallePatrimonioFragment detallePatrimonioFragment;
-    MenuQawayFragment menuQawayFragment;
+    DetalleLiteraturaFragment detalleLiteraturaFragment;
+    DetalleArtesaniaFragment detalleArtesaniaFragment;
 
+    MenuQawayFragment menuQawayFragment;
 
 
     @Override
@@ -144,4 +150,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
+
+    public void enviarLiteratura(Literatura literatura) {
+        //aqui se hace la logica para realizar el envio
+        detalleLiteraturaFragment=new DetalleLiteraturaFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("literatura",literatura);
+        detalleLiteraturaFragment.setArguments(bundleEnvio);
+
+        // abrir fragment detalle literatura
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, detalleLiteraturaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+    }
+
+
+    public void enviarArtesania(Artesania artesania) {
+
+        detalleArtesaniaFragment=new DetalleArtesaniaFragment();
+        Bundle bundleEnvio= new Bundle();
+        bundleEnvio.putSerializable("artesania", artesania);
+        detalleArtesaniaFragment.setArguments(bundleEnvio);
+
+
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, detalleArtesaniaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+    }
+
+
 }

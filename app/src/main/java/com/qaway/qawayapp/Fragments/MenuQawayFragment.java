@@ -43,6 +43,8 @@ public class MenuQawayFragment extends Fragment {
 
     // variables para los botonos del menu
     Button btnPatrimonios;
+    Button btnLiteratura;
+    Button btnArtesania;
 
     /**
      * Use this factory method to create a new instance of
@@ -97,7 +99,6 @@ public class MenuQawayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
                 PatrimoniosFragment patrimoniosFragment = new PatrimoniosFragment();
                 FragmentTransaction trans = getFragmentManager().beginTransaction();
                 trans.replace(R.id.contenedor, patrimoniosFragment);
@@ -106,6 +107,37 @@ public class MenuQawayFragment extends Fragment {
 
             }
         });
+
+        btnLiteratura = vista.findViewById(R.id.btnLiteratura);
+        btnLiteratura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LiteraturaFragment literaturaFragment = new LiteraturaFragment();
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+                trans.replace(R.id.contenedor, literaturaFragment);
+                trans.commit();
+
+
+            }
+        });
+
+
+        btnArtesania = vista.findViewById(R.id.btnArtesanias);
+        btnArtesania.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArtesaniaFragment artesaniaFragment = new ArtesaniaFragment();
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+                trans.replace(R.id.contenedor, artesaniaFragment);
+                trans.commit();
+
+
+            }
+        });
+
+
 
         return vista;
     }
