@@ -45,7 +45,7 @@ public class MenuQawayFragment extends Fragment {
     Button btnPatrimonios;
     Button btnLiteratura;
     Button btnArtesania;
-
+    Button btnDanza;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -137,6 +137,19 @@ public class MenuQawayFragment extends Fragment {
             }
         });
 
+        btnDanza = vista.findViewById(R.id.btnDanzas);
+        btnDanza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DanzaFragment danzaFragment = new DanzaFragment();
+                FragmentTransaction trans = getFragmentManager().beginTransaction();
+                trans.replace(R.id.contenedor, danzaFragment);
+                trans.commit();
+
+
+            }
+        });
 
 
         return vista;

@@ -17,15 +17,19 @@ import com.qaway.qawayapp.Entidades.Artesania;
 import com.qaway.qawayapp.Entidades.Patrimonio;
 import com.qaway.qawayapp.Entidades.Literatura;
 import com.qaway.qawayapp.Entidades.Provincia;
+import com.qaway.qawayapp.Entidades.Danza;
 import com.qaway.qawayapp.Fragments.AcercadeFragment;
 import com.qaway.qawayapp.Fragments.DdccuscoFragment;
 import com.qaway.qawayapp.Fragments.DetallePatrimonioFragment;
 import com.qaway.qawayapp.Fragments.DetalleLiteraturaFragment;
 import com.qaway.qawayapp.Fragments.DetalleArtesaniaFragment;
+import com.qaway.qawayapp.Fragments.DetalleDanzaFragment;
 import com.qaway.qawayapp.Fragments.HomeFragment;
 import com.qaway.qawayapp.Fragments.MenuQawayFragment;
 import com.qaway.qawayapp.Fragments.MuseoFragment;
 import com.qaway.qawayapp.Interfaces.IComunicaFragments;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, IComunicaFragments {
 
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DetallePatrimonioFragment detallePatrimonioFragment;
     DetalleLiteraturaFragment detalleLiteraturaFragment;
     DetalleArtesaniaFragment detalleArtesaniaFragment;
+    DetalleDanzaFragment detalleDanzaFragment;
 
     MenuQawayFragment menuQawayFragment;
 
@@ -183,6 +188,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contenedor, detalleArtesaniaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+    }
+
+    public void enviarDanza(Danza danza) {
+
+        detalleDanzaFragment=new DetalleDanzaFragment();
+        Bundle bundleEnvio= new Bundle();
+        bundleEnvio.putSerializable("danza", danza);
+        detalleDanzaFragment.setArguments(bundleEnvio);
+
+
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, detalleDanzaFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
