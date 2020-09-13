@@ -5,6 +5,7 @@ import com.qaway.qawayapp.Entidades.Danza;
 import com.qaway.qawayapp.Entidades.Literatura;
 import com.qaway.qawayapp.Entidades.Patrimonio;
 import com.qaway.qawayapp.Entidades.Provincia;
+import com.qaway.qawayapp.Entidades.Turisticos;
 
 public interface IComunicaFragments {
 
@@ -16,4 +17,6 @@ public interface IComunicaFragments {
     public void enviarArtesania(Artesania artesania);
 
     public  void enviarDanza(Danza danza);
+
+    public void enviarTuristicos(Turisticos turisticos);
 }

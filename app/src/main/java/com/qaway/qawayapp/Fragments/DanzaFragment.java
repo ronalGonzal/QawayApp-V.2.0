@@ -86,11 +86,11 @@ public class DanzaFragment extends Fragment {
     }
 
     public void cargarLista() {
-        listaDanza.add(new Danza("", "", R.drawable.festivalmamachajpg));
-        listaDanza.add(new Danza("", "", R.drawable.huchuyqosqo));
-        listaDanza.add(new Danza("", "", R.drawable.urco));
-        listaDanza.add(new Danza("", "", R.drawable.ancasmarka));
-        listaDanza.add(new Danza("", "", R.drawable.inkariy));
+        listaDanza.add(new Danza("El baile del carnaval del Ampay", "El carnaval del Ampay es un baile que se originó en la provincia de Calca, Cusco. Los versos de dicho huayno cusqueño están en quechua y son enmarcados con flores silvestres con el propósito de darle un toque más festivo y tradicional.", R.drawable.carnaval));
+        listaDanza.add(new Danza("La danza del Cápac Chuncho", "Dicho baile se realiza en representación a los guerreros nativos de Kosñipata, una localidad ubicada en la región selvática. Cuenta la tradición que el ch’unchu es el danzante favorito de la Virgen del Carmen. ", R.drawable.valicha));
+        listaDanza.add(new Danza("La danza del Ukuku", "En la danza del Ukuku no hay grupos, existe un solo bailarín vestido con un traje parecido a la piel de un oso y una máscara similar. que acompaña a las comparsas con alegres pasos de baile.", R.drawable.huayno));
+        listaDanza.add(new Danza("Qanchis", "El amor y la ofrenda nos representadas por dos jóvenes, los cuales le rinden homenaje a la Madre Tierra o Pacha Mama. ", R.drawable.inti));
+
 
     }
 

@@ -18,11 +18,13 @@ import com.qaway.qawayapp.Entidades.Patrimonio;
 import com.qaway.qawayapp.Entidades.Literatura;
 import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Entidades.Danza;
+import com.qaway.qawayapp.Entidades.Turisticos;
 import com.qaway.qawayapp.Fragments.AcercadeFragment;
 import com.qaway.qawayapp.Fragments.DdccuscoFragment;
 import com.qaway.qawayapp.Fragments.DetallePatrimonioFragment;
 import com.qaway.qawayapp.Fragments.DetalleLiteraturaFragment;
 import com.qaway.qawayapp.Fragments.DetalleArtesaniaFragment;
+import com.qaway.qawayapp.Fragments.DetalleTuristicosFragment;
 import com.qaway.qawayapp.Fragments.DetalleDanzaFragment;
 import com.qaway.qawayapp.Fragments.HomeFragment;
 import com.qaway.qawayapp.Fragments.MenuQawayFragment;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DetalleLiteraturaFragment detalleLiteraturaFragment;
     DetalleArtesaniaFragment detalleArtesaniaFragment;
     DetalleDanzaFragment detalleDanzaFragment;
-
+    DetalleTuristicosFragment detalleTuristicosFragment;
     MenuQawayFragment menuQawayFragment;
 
 
@@ -205,6 +207,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contenedor, detalleDanzaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+
+    }
+
+    public void enviarTuristicos(Turisticos turisticos) {
+
+        detalleTuristicosFragment=new DetalleTuristicosFragment();
+        Bundle bundleEnvio= new Bundle();
+        bundleEnvio.putSerializable("turisticos", turisticos);
+        detalleTuristicosFragment.setArguments(bundleEnvio);
+
+
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, detalleTuristicosFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 

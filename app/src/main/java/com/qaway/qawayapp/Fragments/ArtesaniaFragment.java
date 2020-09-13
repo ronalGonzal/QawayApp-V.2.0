@@ -89,11 +89,11 @@ public class ArtesaniaFragment extends Fragment {
     }
 
     public void cargarLista() {
-        listaArtesania.add(new Artesania("", "", R.drawable.festivalmamachajpg));
-        listaArtesania.add(new Artesania("", "", R.drawable.huchuyqosqo));
-        listaArtesania.add(new Artesania("", "", R.drawable.urco));
-        listaArtesania.add(new Artesania("", "", R.drawable.ancasmarka));
-        listaArtesania.add(new Artesania("", "", R.drawable.inkariy));
+        listaArtesania.add(new Artesania("Textilería", "Es original y de mejor calidad está refugiada en el mundo rural, en provincias como la de Calca y Urubamba, o en otras más apartadas de la capital departamental.", R.drawable.muecas));
+        listaArtesania.add(new Artesania("Orfebrería, los plateros cusqueños", " Son diestros en la fabricación de joyas, objetos para el culto religioso y diversos objetos utilitarios, producción toda que se diferencia ventajosamente de la fabricada en serie mediante el vaciado en moldes y el estampado.", R.drawable.ceramica));
+        listaArtesania.add(new Artesania("Artesanía cusqueña", "Constituye además un atractivo para los turistas. En Cusco, esta actividad no es un simple souvenir, sino un símbolo histórico, la expresión pura del arte popular. El distrito de Chinchero (Urubamba) pone en evidencia ese rasgo.", R.drawable.art1));
+        listaArtesania.add(new Artesania("Antonio Olave", "Ha alcanzado gran maestría en la fabricación de niños \"Manuelitos\" con detalles como su paladar de espejo, dientes de plumas de aves y cabello natural.", R.drawable.art2));
+        listaArtesania.add(new Artesania("Edilberto Mérida", " Se aleja de los imagineros tradicionales, pues prefiere las imágenes grotescas con los rasgos exegerados, aunque sus motivos de inspiración son también, con frecuencia, religiosos, además de costumbristas.", R.drawable.art2));
 
     }
 
