@@ -26,6 +26,9 @@ import com.qaway.qawayapp.R;
  */
 public class HomeFragment extends Fragment {
 
+    //variable de id provincia
+    TextView txtIdProvincia;
+
     //referencias para comunicar fragment
     Activity actividad;
     IComunicaFragments interfaceComunicaFragmentes;

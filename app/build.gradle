@@ -34,4 +34,7 @@ dependencies {
     //justificar texto
     implementation 'com.codesgood:justifiedtextview:1.1.0'
 
+    //libreria para trabajar con webservices
+    implementation 'com.android.volley:volley:1.1.1'
+
 }

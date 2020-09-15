@@ -28,6 +28,10 @@ public abstract class AdapterDanza extends RecyclerView.Adapter<AdapterDanza.Dan
         this.model = model;
     }
 
+    public AdapterDanza(ArrayList<Danza> model){
+        this.model = model;
+    }
+
     @NonNull
     @Override
     public AdapterDanza.DanzaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,13 +48,18 @@ public abstract class AdapterDanza extends RecyclerView.Adapter<AdapterDanza.Dan
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDanza.DanzaViewHolder holder, int position) {
-        String nomdanza = model.get(position).getNomDanza();
-        String desdanza = model.get(position).getDesDanza();
+
         int imgdanza = model.get(position).getImgDanza();
 
-        holder.nomdanza.setText(nomdanza);
-        holder.desdanza.setText(desdanza);
-        holder.imgdanza.setImageResource(imgdanza);
+        holder.nomdanza.setText(model.get(position).getNomDanza().toString());
+        holder.desdanza.setText(model.get(position).getDesDanza().toString());
+
+
+        if (model.get(position).getImagen()!=null){
+            holder.imgdanza.setImageBitmap(model.get(position).getImagen());
+        }else{
+            holder.imgdanza.setImageResource(R.drawable.img_base);
+        }
 
     }
 

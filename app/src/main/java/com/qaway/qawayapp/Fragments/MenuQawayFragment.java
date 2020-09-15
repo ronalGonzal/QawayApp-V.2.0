@@ -1,7 +1,10 @@
 package com.qaway.qawayapp.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,6 +17,7 @@ import android.widget.TextView;
 
 import com.qaway.qawayapp.Entidades.Patrimonio;
 import com.qaway.qawayapp.Entidades.Provincia;
+import com.qaway.qawayapp.Interfaces.IComunicaFragments;
 import com.qaway.qawayapp.R;
 
 /**
@@ -26,7 +30,11 @@ public class MenuQawayFragment extends Fragment {
     //variables referencia para recibir objeto provincia
     TextView nomProvincia;
     ImageView imgProvincia;
+    Provincia pro;
 
+    //referencias para comunicar fragment
+    Activity actividad;
+    IComunicaFragments interfaceComunicaFragmentes;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -89,6 +97,7 @@ public class MenuQawayFragment extends Fragment {
         //validacion para verificar si existe argumento enviado para mostrar
         if (objetoProvincia != null) {
             provincia = (Provincia) objetoProvincia.getSerializable("provincia");
+            pro=provincia;
             //establecer datos en la vista
             nomProvincia.setText(provincia.getNomProvincia());
             imgProvincia.setImageResource(provincia.getImgProvincia());
@@ -149,6 +158,9 @@ public class MenuQawayFragment extends Fragment {
                 trans.replace(R.id.contenedor, danzaFragment);
                 trans.commit();
 
+                //enviar provincia seleccionada
+
+                interfaceComunicaFragmentes.enviarProvinciaDanzas(pro);
 
             }
         });
@@ -170,5 +182,21 @@ public class MenuQawayFragment extends Fragment {
 
 
         return vista;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity) {
+            this.actividad = (Activity) context;
+            interfaceComunicaFragmentes = (IComunicaFragments) this.actividad;
+
+
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }

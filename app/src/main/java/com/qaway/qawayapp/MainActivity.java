@@ -20,6 +20,7 @@ import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Entidades.Danza;
 import com.qaway.qawayapp.Entidades.Turisticos;
 import com.qaway.qawayapp.Fragments.AcercadeFragment;
+import com.qaway.qawayapp.Fragments.DanzaFragment;
 import com.qaway.qawayapp.Fragments.DdccuscoFragment;
 import com.qaway.qawayapp.Fragments.DetallePatrimonioFragment;
 import com.qaway.qawayapp.Fragments.DetalleLiteraturaFragment;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DetalleDanzaFragment detalleDanzaFragment;
     DetalleTuristicosFragment detalleTuristicosFragment;
     MenuQawayFragment menuQawayFragment;
+
+    DanzaFragment danzaFragment;
 
 
     @Override
@@ -135,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.replace(R.id.contenedor, menuQawayFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
-
     }
 
     @Override
@@ -227,6 +229,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+
+    }
+
+    @Override
+    public void enviarProvinciaDanzas(Provincia provincia) {
+        //aqui se hace la logica para realizar el envio
+        danzaFragment=new DanzaFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("provincia",provincia);
+        danzaFragment.setArguments(bundleEnvio);
+
+        // abrir fragment Danza
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, danzaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 

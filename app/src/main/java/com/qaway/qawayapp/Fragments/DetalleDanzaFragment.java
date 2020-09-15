@@ -76,7 +76,12 @@ public class DetalleDanzaFragment extends Fragment {
             //establecer datos en la vista
             nomdetdanza.setText(danza.getNomDanza());
             desdetdanza.setText(danza.getDesDanza());
-            imgdetdanza.setImageResource(danza.getImgDanza());
+            if (danza.getImagen()!=null){
+                imgdetdanza.setImageBitmap(danza.getImagen());
+            }else{
+                imgdetdanza.setImageResource(R.drawable.img_base);
+            }
+            //imgdetdanza.setImageResource(danza.getImgDanza());
 
         }
 

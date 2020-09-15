@@ -19,4 +19,6 @@ public interface IComunicaFragments {
     public  void enviarDanza(Danza danza);
 
     public void enviarTuristicos(Turisticos turisticos);
+
+    public void enviarProvinciaDanzas(Provincia provincia);
 }
