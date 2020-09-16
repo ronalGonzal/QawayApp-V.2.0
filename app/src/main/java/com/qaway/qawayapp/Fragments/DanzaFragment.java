@@ -107,6 +107,10 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
         //validacion para verificar si existe argumento enviado para mostrar
         if (objetoProvincia != null) {
             provincia = (Provincia) objetoProvincia.getSerializable("provincia");
+            request = Volley.newRequestQueue(getContext());
+
+
+            cargarWebservices( String.valueOf(provincia.getIdProvincia()));
             //establecer datos en la vista
            // Toast.makeText(getContext(), "Estas en la provincia " + provincia.getNomProvincia() + " - " + provincia.getIdProvincia() , Toast.LENGTH_LONG).show();
         }else   {
@@ -115,11 +119,7 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
 
 
 
-        request = Volley.newRequestQueue(getContext());
 
-
-
-        cargarWebservices();
 
 
         //cargar la lista
@@ -130,12 +130,12 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
         return vista;
     }
 
-    private void cargarWebservices() {
+    private void cargarWebservices(String idProvincia) {
         progress = new ProgressDialog(getContext());
         progress.setMessage("Consultando...");
         progress.show();
 
-        String url = "http://192.168.1.55:81/qawayRemoto/wsJSONConsultarDanzas.php";
+        String url = "http://tallerpro-001-site1.btempurl.com/wsJSONConsultarDanzasxProvincia.php?idProvincia=" + idProvincia;
 
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
         request.add(jsonObjectRequest);

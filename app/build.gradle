@@ -37,4 +37,6 @@ dependencies {
     //libreria para trabajar con webservices
     implementation 'com.android.volley:volley:1.1.1'
 
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+
 }
