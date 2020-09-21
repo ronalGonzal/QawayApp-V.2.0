@@ -75,7 +75,12 @@ public class DetalleLiteraturaFragment extends Fragment {
             //establecer datos en la vista
             nomdetliteratura.setText(literatura.getNomLiteratura());
             desdetliteratura.setText(literatura.getDesLiteratura());
-            imgdetliteratura.setImageResource(literatura.getImgLiteratura());
+            if (literatura.getImagen()!=null){
+                imgdetliteratura.setImageBitmap(literatura.getImagen());
+            }else{
+                imgdetliteratura.setImageResource(R.drawable.img_base);
+            }
+            //imgdetliteratura.setImageResource(literatura.getImgLiteratura());
 
         }
 

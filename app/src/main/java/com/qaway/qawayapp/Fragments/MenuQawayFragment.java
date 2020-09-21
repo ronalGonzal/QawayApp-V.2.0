@@ -115,6 +115,10 @@ public class MenuQawayFragment extends Fragment {
                 trans.replace(R.id.contenedor, patrimoniosFragment);
                 trans.commit();
 
+                //enviar provincia seleccionada
+
+                interfaceComunicaFragmentes.enviarProvinciaPatrimonios(pro);
+
 
             }
         });
@@ -129,7 +133,7 @@ public class MenuQawayFragment extends Fragment {
                 trans.replace(R.id.contenedor, literaturaFragment);
                 trans.commit();
 
-
+                interfaceComunicaFragmentes.enviarProvinciaLiteraturas(pro);
             }
         });
 
@@ -143,6 +147,8 @@ public class MenuQawayFragment extends Fragment {
                 FragmentTransaction trans = getFragmentManager().beginTransaction();
                 trans.replace(R.id.contenedor, artesaniaFragment);
                 trans.commit();
+
+                interfaceComunicaFragmentes.enviarProvinciaArtesanias(pro);
 
 
             }
@@ -175,7 +181,7 @@ public class MenuQawayFragment extends Fragment {
                 trans.replace(R.id.contenedor, turisticosFragment);
                 trans.commit();
 
-
+                interfaceComunicaFragmentes.enviarProvinciaTuristicos(pro);
             }
         });
 

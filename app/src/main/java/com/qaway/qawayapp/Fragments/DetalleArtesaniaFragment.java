@@ -83,7 +83,12 @@ public class DetalleArtesaniaFragment  extends Fragment {
             //establecer datos en la vista
             nomdetartesano.setText(artesania.getNomArtesano());
             desdetartesano.setText(artesania.getDesArtesano());
-            imgdetartesano.setImageResource(artesania.getImgArtesano());
+            if (artesania.getImagen()!=null){
+                imgdetartesano.setImageBitmap(artesania.getImagen());
+            }else{
+                imgdetartesano.setImageResource(R.drawable.img_base);
+            }
+
 
         }
 

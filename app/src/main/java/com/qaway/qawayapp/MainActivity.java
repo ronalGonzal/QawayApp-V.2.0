@@ -20,6 +20,7 @@ import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Entidades.Danza;
 import com.qaway.qawayapp.Entidades.Turisticos;
 import com.qaway.qawayapp.Fragments.AcercadeFragment;
+import com.qaway.qawayapp.Fragments.ArtesaniaFragment;
 import com.qaway.qawayapp.Fragments.DanzaFragment;
 import com.qaway.qawayapp.Fragments.DdccuscoFragment;
 import com.qaway.qawayapp.Fragments.DetallePatrimonioFragment;
@@ -28,8 +29,12 @@ import com.qaway.qawayapp.Fragments.DetalleArtesaniaFragment;
 import com.qaway.qawayapp.Fragments.DetalleTuristicosFragment;
 import com.qaway.qawayapp.Fragments.DetalleDanzaFragment;
 import com.qaway.qawayapp.Fragments.HomeFragment;
+import com.qaway.qawayapp.Fragments.LiteraturaFragment;
 import com.qaway.qawayapp.Fragments.MenuQawayFragment;
 import com.qaway.qawayapp.Fragments.MuseoFragment;
+import com.qaway.qawayapp.Fragments.PatrimoniosFragment;
+import com.qaway.qawayapp.Fragments.TuristicosFragment;
+import com.qaway.qawayapp.Fragments.ZonasCuscoFragment;
 import com.qaway.qawayapp.Interfaces.IComunicaFragments;
 
 import java.io.Serializable;
@@ -54,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     MenuQawayFragment menuQawayFragment;
 
     DanzaFragment danzaFragment;
+    PatrimoniosFragment patrimoniosFragment;
+    LiteraturaFragment literaturaFragment;
+    ArtesaniaFragment artesaniaFragment;
+    TuristicosFragment turisticosFragment;
 
 
     @Override
@@ -114,6 +123,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.contenedor, new MuseoFragment());
             fragmentTransaction.commit();
         }
+        if (item.getItemId()==R.id.zonas){
+            //cargar fragmente acerca de app
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contenedor, new ZonasCuscoFragment());
+            fragmentTransaction.commit();
+        }
+
 
         if (item.getItemId()==R.id.salir){
             System.exit(0);
@@ -249,6 +266,79 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+    }
+
+    @Override
+    public void enviarProvinciaPatrimonios(Provincia provincia) {
+        //aqui se hace la logica para realizar el envio
+        patrimoniosFragment=new PatrimoniosFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("provincia",provincia);
+        patrimoniosFragment.setArguments(bundleEnvio);
+
+        // abrir fragment Danza
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, patrimoniosFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void enviarProvinciaLiteraturas(Provincia provincia) {
+        //aqui se hace la logica para realizar el envio
+        literaturaFragment=new LiteraturaFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("provincia",provincia);
+        literaturaFragment.setArguments(bundleEnvio);
+
+        // abrir fragment Danza
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, literaturaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void enviarProvinciaArtesanias(Provincia provincia) {
+        //aqui se hace la logica para realizar el envio
+        artesaniaFragment=new ArtesaniaFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("provincia",provincia);
+        artesaniaFragment.setArguments(bundleEnvio);
+
+        // abrir fragment Danza
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, artesaniaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void enviarProvinciaTuristicos(Provincia provincia) {
+        //aqui se hace la logica para realizar el envio
+        turisticosFragment=new TuristicosFragment();
+        //objeto bundle para transportar la informacion
+        Bundle bundleEnvio= new Bundle();
+        //enviar objeto que esta llegando con serializable
+        bundleEnvio.putSerializable("provincia",provincia);
+        turisticosFragment.setArguments(bundleEnvio);
+
+        // abrir fragment Danza
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.contenedor, turisticosFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
 

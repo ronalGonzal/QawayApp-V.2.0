@@ -21,4 +21,9 @@ public interface IComunicaFragments {
     public void enviarTuristicos(Turisticos turisticos);
 
     public void enviarProvinciaDanzas(Provincia provincia);
+
+    public void enviarProvinciaPatrimonios(Provincia provincia);
+    public void enviarProvinciaLiteraturas(Provincia provincia);
+    public void enviarProvinciaArtesanias(Provincia provincia);
+    public void enviarProvinciaTuristicos(Provincia provincia);
 }

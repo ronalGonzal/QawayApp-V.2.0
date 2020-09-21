@@ -44,13 +44,16 @@ public class AdapterTuristicos extends RecyclerView.Adapter<AdapterTuristicos.Tu
 
     @Override
     public void onBindViewHolder(@NonNull AdapterTuristicos.TuristicosViewHolder holder, int position) {
-        String nomturisticos = model.get(position).getNomTuristicos();
-        String desturisticos = model.get(position).getDesTuristicos();
-        int imgturisticos = model.get(position).getImgTuristicos();
 
-        holder.nomturisticos.setText(nomturisticos);
-        holder.desturisticos.setText(desturisticos);
-        holder.imgturisticos.setImageResource(imgturisticos);
+        holder.nomturisticos.setText(model.get(position).getNomTuristicos().toString());
+        holder.desturisticos.setText(model.get(position).getDesTuristicos().toString());
+
+
+        if (model.get(position).getImagen()!=null){
+            holder.imgturisticos.setImageBitmap(model.get(position).getImagen());
+        }else{
+            holder.imgturisticos.setImageResource(R.drawable.img_base);
+        }
 
     }
 

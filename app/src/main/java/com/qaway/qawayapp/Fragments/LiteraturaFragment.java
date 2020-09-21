@@ -1,6 +1,7 @@
 package com.qaway.qawayapp.Fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -9,15 +10,29 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.qaway.qawayapp.Adaptadores.AdapterDanza;
 import com.qaway.qawayapp.Adaptadores.AdapterLiteratura;
+import com.qaway.qawayapp.Entidades.Danza;
 import com.qaway.qawayapp.Entidades.Literatura;
+import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Interfaces.IComunicaFragments;
 import com.qaway.qawayapp.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -26,7 +41,7 @@ import java.util.ArrayList;
  * Use the {@link PatrimoniosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LiteraturaFragment extends Fragment {
+public class LiteraturaFragment extends Fragment implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     AdapterLiteratura adapterLiteratura;
     RecyclerView recyclerViewLiteratura;
@@ -35,6 +50,11 @@ public class LiteraturaFragment extends Fragment {
     //referencias para comunicar fragment
     Activity actividad;
     IComunicaFragments interfaceComunicaFragmentes;
+
+    //variables para trabajar con webservices
+    ProgressDialog progress;
+    RequestQueue request;
+    JsonObjectRequest jsonObjectRequest;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,21 +101,102 @@ public class LiteraturaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_literatura, container, false);
-        recyclerViewLiteratura = vista.findViewById(R.id.recyLiteratura);
+
         listaLiteratura = new ArrayList<>();
+        recyclerViewLiteratura = (RecyclerView) vista.findViewById(R.id.recyLiteratura);
+        recyclerViewLiteratura.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerViewLiteratura.setHasFixedSize(true);
+
+        //crear objeto bundle para recibir el objero enviado por argumentos
+        Bundle objetoProvincia = getArguments();
+        Provincia provincia = null;
+        //validacion para verificar si existe argumento enviado para mostrar
+        if (objetoProvincia != null) {
+            provincia = (Provincia) objetoProvincia.getSerializable("provincia");
+            request = Volley.newRequestQueue(getContext());
+
+
+            cargarWebservices( String.valueOf(provincia.getIdProvincia()));
+            //establecer datos en la vista
+            // Toast.makeText(getContext(), "Estas en la provincia " + provincia.getNomProvincia() + " - " + provincia.getIdProvincia() , Toast.LENGTH_LONG).show();
+        }else   {
+            //Toast.makeText(getContext(), "La provincia esta en nullo" , Toast.LENGTH_LONG).show();
+        }
+
         //cargar la lista
-        cargarLista();
+        //cargarLista();
         //mostrar datos
-        mostrarData();
+        //mostrarData();
 
         return vista;
     }
 
+    private void cargarWebservices(String idProvincia) {
+        progress = new ProgressDialog(getContext());
+        progress.setMessage("Consultando...");
+        progress.show();
+
+        String url = "http://tallerpro-001-site1.btempurl.com/wsJSONConsultarLiteraturasxProvincia.php?idProvincia=" + idProvincia;
+
+        jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
+        request.add(jsonObjectRequest);
+
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se puede conectar " + error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        Log.d("ERROR: ", error.toString());
+        progress.hide();
+    }
+
+    @Override
+    public void onResponse(JSONObject response) {
+        Literatura literatura = null;
+
+        JSONArray json = response.optJSONArray("Literaturas");
+
+        try {
+            for (int i = 0; i < json.length(); i++) {
+                literatura = new Literatura();
+                JSONObject jsonObject = null;
+                jsonObject = json.getJSONObject(i);
+
+                literatura.setNomLiteratura(jsonObject.optString("nomAutor"));
+                literatura.setDesLiteratura(jsonObject.optString("desAutor"));
+                literatura.setDatoimagen(jsonObject.optString("imgAutor"));
+
+
+                listaLiteratura.add(literatura);
+            }
+            progress.hide();
+            adapterLiteratura = new AdapterLiteratura(getContext(),
+                    listaLiteratura) {
+            };
+            recyclerViewLiteratura.setAdapter(adapterLiteratura);
+            adapterLiteratura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String nomlite = listaLiteratura.get(recyclerViewLiteratura.getChildAdapterPosition(v)).getNomLiteratura();
+                    Toast.makeText(getContext(), "Selecciono: " + nomlite, Toast.LENGTH_LONG).show();
+                    //enviar el objeto
+                    interfaceComunicaFragmentes.enviarLiteratura(listaLiteratura.get(recyclerViewLiteratura.getChildAdapterPosition(v)));
+                }
+            });
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "No se a podido establecer conexcion con el servidor " + response, Toast.LENGTH_LONG).show();
+            progress.hide();
+        }
+    }
     public void cargarLista() {
-        listaLiteratura.add(new Literatura("Soledad Araoz.", "Nació en el Cusco, en 1976. A Soledad la acompaña una hija, tiene los cabellos enrulados, y ha bebido mucha agua del río Tambopata, por lo que la selva la llama con frecuencia.", R.drawable.soledad));
-        listaLiteratura.add(new Literatura("Germán Bausch", "Profesor Jubilado, poeta, escritor i compositor. Nació en Cusco en 1921", R.drawable.german));
-        listaLiteratura.add(new Literatura("Raúl Brozovich", "Fue miembro de la generación literaria del 50 y fundador del grupo cultural Rumiñahui. Raúl Brozovich Mendoza (Cusco 1928 - 2006)", R.drawable.raul));
-        listaLiteratura.add(new Literatura("Tania Castro", "Tania Castro es una de las artistas más interesantes, claras y luminosas del Cusco. Es actriz, educadora y comunicadora social, con enfoque en el poder sanador de la palabra.", R.drawable.tania));
+       // listaLiteratura.add(new Literatura("Soledad Araoz.", "Nació en el Cusco, en 1976. A Soledad la acompaña una hija, tiene los cabellos enrulados, y ha bebido mucha agua del río Tambopata, por lo que la selva la llama con frecuencia.", R.drawable.soledad));
+        //listaLiteratura.add(new Literatura("Germán Bausch", "Profesor Jubilado, poeta, escritor i compositor. Nació en Cusco en 1921", R.drawable.german));
+        //listaLiteratura.add(new Literatura("Raúl Brozovich", "Fue miembro de la generación literaria del 50 y fundador del grupo cultural Rumiñahui. Raúl Brozovich Mendoza (Cusco 1928 - 2006)", R.drawable.raul));
+        //listaLiteratura.add(new Literatura("Tania Castro", "Tania Castro es una de las artistas más interesantes, claras y luminosas del Cusco. Es actriz, educadora y comunicadora social, con enfoque en el poder sanador de la palabra.", R.drawable.tania));
 
     }
 
@@ -130,4 +231,6 @@ public class LiteraturaFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
 }

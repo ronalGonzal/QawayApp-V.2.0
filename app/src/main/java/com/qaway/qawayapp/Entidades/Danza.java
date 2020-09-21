@@ -7,7 +7,6 @@ import android.util.Base64;
 import java.io.Serializable;
 
 public class Danza implements Serializable {
-
     private String nomDanza;
     private  String desDanza;
     private int imgDanza;

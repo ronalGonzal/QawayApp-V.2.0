@@ -45,13 +45,16 @@ public class AdapterLiteratura extends RecyclerView.Adapter<AdapterLiteratura.Li
 
     @Override
     public void onBindViewHolder(@NonNull AdapterLiteratura.LiteraturaViewHolder holder, int position) {
-        String nomliteratura = model.get(position).getNomLiteratura();
-        String desliteratura = model.get(position).getDesLiteratura();
-        int imgliteratura = model.get(position).getImgLiteratura();
 
-        holder.nomliteratura.setText(nomliteratura);
-        holder.desliteratura.setText(desliteratura);
-        holder.imgliteratura.setImageResource(imgliteratura);
+        holder.nomliteratura.setText(model.get(position).getNomLiteratura().toString());
+        holder.desliteratura.setText(model.get(position).getDesLiteratura().toString());
+
+
+        if (model.get(position).getImagen()!=null){
+            holder.imgliteratura.setImageBitmap(model.get(position).getImagen());
+        }else{
+            holder.imgliteratura.setImageResource(R.drawable.img_base);
+        }
 
 
     }

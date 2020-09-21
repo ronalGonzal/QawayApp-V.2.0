@@ -80,7 +80,12 @@ public class DetalleTuristicosFragment extends Fragment {
             //establecer datos en la vista
             nomdetturisticos.setText(turisticos.getNomTuristicos());
             desdetturisticos.setText(turisticos.getDesTuristicos());
-            imgdetturisticos.setImageResource(turisticos.getImgTuristicos());
+            if (turisticos.getImagen()!=null){
+                imgdetturisticos.setImageBitmap(turisticos.getImagen());
+            }else{
+                imgdetturisticos.setImageResource(R.drawable.img_base);
+            }
+
 
         }
 

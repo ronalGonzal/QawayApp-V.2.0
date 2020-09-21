@@ -49,7 +49,6 @@ public abstract class AdapterDanza extends RecyclerView.Adapter<AdapterDanza.Dan
     @Override
     public void onBindViewHolder(@NonNull AdapterDanza.DanzaViewHolder holder, int position) {
 
-        int imgdanza = model.get(position).getImgDanza();
 
         holder.nomdanza.setText(model.get(position).getNomDanza().toString());
         holder.desdanza.setText(model.get(position).getDesDanza().toString());

@@ -30,7 +30,7 @@ public class AdapterPatrimonio extends RecyclerView.Adapter<AdapterPatrimonio.Pa
 
     @NonNull
     @Override
-    public PatrimonioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterPatrimonio.PatrimonioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = inflater.inflate(R.layout.lista_patrimonios, parent, false);
         vista.setOnClickListener(this);
         return new PatrimonioViewHolder(vista);
@@ -44,13 +44,18 @@ public class AdapterPatrimonio extends RecyclerView.Adapter<AdapterPatrimonio.Pa
 
     @Override
     public void onBindViewHolder(@NonNull PatrimonioViewHolder holder, int position) {
-        String nompatrimonio = model.get(position).getNomPatrimonio();
-        String despatromonio = model.get(position).getDesPatrimonio();
-        int imgpatromonio = model.get(position).getImgPatrimonio();
 
-        holder.nompatrimonio.setText(nompatrimonio);
-        holder.despatrimonio.setText(despatromonio);
-        holder.imgpatrimonio.setImageResource(imgpatromonio);
+
+        holder.nompatrimonio.setText(model.get(position).getNomPatrimonio().toString());
+        holder.despatrimonio.setText(model.get(position).getDesPatrimonio().toString());
+
+
+        if (model.get(position).getImagen()!=null){
+            holder.imgpatrimonio.setImageBitmap(model.get(position).getImagen());
+        }else{
+            holder.imgpatrimonio.setImageResource(R.drawable.img_base);
+        }
+
 
     }
 

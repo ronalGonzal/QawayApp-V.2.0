@@ -75,14 +75,19 @@ public class DetallePatrimonioFragment extends Fragment {
 
         //crear objeto bundle para recibir el objero enviado por argumentos
         Bundle objetoPatrimonio= getArguments();
-        Patrimonio patrimonio=null;
+        Patrimonio patrimonio;
         //validacion para verificar si existe argumento enviado para mostrar
         if (objetoPatrimonio!=null){
             patrimonio= (Patrimonio) objetoPatrimonio.getSerializable("patrimonio");
             //establecer datos en la vista
             nomdetpatrimonio.setText(patrimonio.getNomPatrimonio());
             desdetpatromonio.setText(patrimonio.getDesPatrimonio());
-            imgdetpatromonio.setImageResource(patrimonio.getImgPatrimonio());
+            if (patrimonio.getImagen()!=null){
+                imgdetpatromonio.setImageBitmap(patrimonio.getImagen());
+            }else{
+                imgdetpatromonio.setImageResource(R.drawable.img_base);
+            }
+           // imgdetpatromonio.setImageResource(patrimonio.getImgPatrimonio());
 
         }
 

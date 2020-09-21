@@ -46,13 +46,15 @@ public class AdapterArtesania extends RecyclerView.Adapter<AdapterArtesania.Arte
 
     @Override
     public void onBindViewHolder(@NonNull AdapterArtesania.ArtesaniaViewHolder holder, int position) {
-        String nomartesano = model.get(position).getNomArtesano();
-        String desartesano = model.get(position).getDesArtesano();
-        int imgartesano = model.get(position).getImgArtesano();
 
-        holder.nomartesano.setText(nomartesano);
-        holder.desartesano.setText(desartesano);
-        holder.imgartesano.setImageResource(imgartesano);
+        holder.nomartesano.setText(model.get(position).getNomArtesano().toString());
+        holder.desartesano.setText(model.get(position).getDesArtesano().toString());
+
+        if (model.get(position).getImagen()!=null){
+            holder.imgartesano.setImageBitmap(model.get(position).getImagen());
+        }else{
+            holder.imgartesano.setImageResource(R.drawable.img_base);
+        }
 
     }
 

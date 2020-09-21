@@ -100,7 +100,6 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
         recyclerViewDanza.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerViewDanza.setHasFixedSize(true);
 
-        ///
         //crear objeto bundle para recibir el objero enviado por argumentos
         Bundle objetoProvincia = getArguments();
         Provincia provincia = null;
@@ -116,11 +115,6 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
         }else   {
             //Toast.makeText(getContext(), "La provincia esta en nullo" , Toast.LENGTH_LONG).show();
         }
-
-
-
-
-
 
         //cargar la lista
         // cargarLista(); usaremos webservices
@@ -166,7 +160,7 @@ public class DanzaFragment extends Fragment implements Response.Listener<JSONObj
                 danza.setNomDanza(jsonObject.optString("nomDanza"));
                 danza.setDesDanza(jsonObject.optString("desDanza"));
                 danza.setDatoimagen(jsonObject.optString("imgDanza"));
-                danza.setImgDanza(R.drawable.carnaval);
+                //danza.setImgDanza(R.drawable.carnaval);
 
                 listaDanza.add(danza);
             }

@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_museum"
             android:title="Museo Qoricancha"></item>
     <item
+        android:id="@+id/zonas"
+        android:icon="@drawable/ic_location"
+        android:title="Zonas en Cusco"></item>
+    <item
         android:id="@+id/salir"
         android:icon="@drawable/ic_close"
         android:title="Salir"></item>
