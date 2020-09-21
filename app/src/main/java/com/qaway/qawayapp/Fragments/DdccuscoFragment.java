@@ -1,12 +1,21 @@
 package com.qaway.qawayapp.Fragments;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.qaway.qawayapp.R;
 
@@ -16,6 +25,9 @@ import com.qaway.qawayapp.R;
  * create an instance of this fragment.
  */
 public class DdccuscoFragment extends Fragment {
+
+    //bton llamar
+    ImageButton btnllamarddc;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +73,36 @@ public class DdccuscoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ddccusco, container, false);
+        View vista=inflater.inflate(R.layout.fragment_ddccusco, container, false);
+
+        btnllamarddc=vista.findViewById(R.id.btnLlamarDDC);
+        btnllamarddc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                call();
+            }
+        });
+        return vista;
     }
+
+    void call() {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + "(+5184)582030"));
+            getActivity().startActivity(callIntent);
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE},
+                    CALL_PERMISSION_REQUEST_CODE);
+        }
+    }
+    private static final int CALL_PERMISSION_REQUEST_CODE = 1234;
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CALL_PERMISSION_REQUEST_CODE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 }

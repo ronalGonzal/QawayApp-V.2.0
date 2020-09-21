@@ -66,14 +66,7 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnMusicas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#BC1A0E"
-        android:text="Musica"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+
 
     <Button
         android:id="@+id/btnLugares"

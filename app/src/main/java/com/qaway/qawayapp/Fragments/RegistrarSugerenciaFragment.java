@@ -71,7 +71,7 @@ public class RegistrarSugerenciaFragment extends Fragment {
     private static final int COD_SELECCIONA = 10;
     private static final int COD_FOTO = 20;
 
-    EditText campoNombre,campoDocumento,campoProfesion;
+    EditText txtTituloSugerencia,txtDesSugerencia;
     Button botonRegistro,btnFoto;
     ImageView imgFoto;
     ProgressDialog progreso;
@@ -129,9 +129,8 @@ public class RegistrarSugerenciaFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View vista=inflater.inflate(R.layout.fragment_registrar_sugerencia, container, false);
-        campoDocumento= (EditText) vista.findViewById(R.id.campoDoc);
-        campoNombre= (EditText) vista.findViewById(R.id.campoNombre);
-        campoProfesion= (EditText) vista.findViewById(R.id.campoProfesion);
+        txtTituloSugerencia= (EditText) vista.findViewById(R.id.txtTituloSugerencia);
+        txtDesSugerencia= (EditText) vista.findViewById(R.id.txtDesSugerencia);
         botonRegistro= (Button) vista.findViewById(R.id.btnRegistrar);
         btnFoto=(Button) vista.findViewById(R.id.btnFoto);
 
@@ -169,7 +168,7 @@ public class RegistrarSugerenciaFragment extends Fragment {
     }
 
     private void mostrarDialogOpciones() {
-        Toast.makeText(getContext(), "Mostarr " , Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Mostarr " , Toast.LENGTH_LONG).show();
         final CharSequence[] opciones={"Tomar Foto","Elegir de Galeria","Cancelar"};
         final AlertDialog.Builder builder=new AlertDialog.Builder(getContext());
         builder.setTitle("Elige una Opción");
@@ -379,9 +378,8 @@ public class RegistrarSugerenciaFragment extends Fragment {
                 progreso.hide();
 
                 if (response.trim().equalsIgnoreCase("registra")){
-                    campoNombre.setText("");
-                    campoDocumento.setText("");
-                    campoProfesion.setText("");
+                    txtTituloSugerencia.setText("");
+                    txtDesSugerencia.setText("");
                     Toast.makeText(getContext(),"Se ha registrado con exito",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getContext(),"No se ha registrado ",Toast.LENGTH_SHORT).show();
@@ -399,8 +397,8 @@ public class RegistrarSugerenciaFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
-                String tituloSugerencia=campoNombre.getText().toString();
-                String desSugerencia=campoProfesion.getText().toString();
+                String tituloSugerencia=txtTituloSugerencia.getText().toString();
+                String desSugerencia=txtDesSugerencia.getText().toString();
 
                 String imgSugerencia=convertirImgString(bitmap);
 

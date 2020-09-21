@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "192513817318",
+    "firebase_url": "https://cursoandroid2020-289600.firebaseio.com",
+    "project_id": "cursoandroid2020-289600",
+    "storage_bucket": "cursoandroid2020-289600.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192513817318:android:690682a872c486fa181927",
+        "android_client_info": {
+          "package_name": "com.qaway.qawayapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192513817318-52sr87ivuonmo553dc2kmv154l3or56u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.qaway.qawayapp",
+            "certificate_hash": "a6b2cfa4b28e1e721710b74f25385543043a36da"
+          }
+        },
+        {
+          "client_id": "192513817318-as4e92v9nl1h5cvnd8ak7tut0tugko0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9FLzuj6Eu8qCaS3hcD9_SWUXaQIt9IjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192513817318-as4e92v9nl1h5cvnd8ak7tut0tugko0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,16 @@
 package com.qaway.qawayapp.Fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,10 +20,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qaway.qawayapp.Entidades.Patrimonio;
 import com.qaway.qawayapp.Entidades.Provincia;
 import com.qaway.qawayapp.Interfaces.IComunicaFragments;
+import com.qaway.qawayapp.MainActivity;
 import com.qaway.qawayapp.R;
 
 /**
@@ -90,14 +98,14 @@ public class MenuQawayFragment extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_menu_qaway, container, false);
 
         nomProvincia = vista.findViewById(R.id.nomProvinciaS);
-        imgProvincia= vista.findViewById(R.id.imgProvinciaS);
+        imgProvincia = vista.findViewById(R.id.imgProvinciaS);
         //crear objeto bundle para recibir el objero enviado por argumentos
         Bundle objetoProvincia = getArguments();
         Provincia provincia = null;
         //validacion para verificar si existe argumento enviado para mostrar
         if (objetoProvincia != null) {
             provincia = (Provincia) objetoProvincia.getSerializable("provincia");
-            pro=provincia;
+            pro = provincia;
             //establecer datos en la vista
             nomProvincia.setText(provincia.getNomProvincia());
             imgProvincia.setImageResource(provincia.getImgProvincia());
@@ -115,9 +123,9 @@ public class MenuQawayFragment extends Fragment {
                 trans.replace(R.id.contenedor, patrimoniosFragment);
                 trans.commit();
 
-                //enviar provincia seleccionada
 
-                interfaceComunicaFragmentes.enviarProvinciaPatrimonios(pro);
+                //enviar provincia seleccionada
+                 interfaceComunicaFragmentes.enviarProvinciaPatrimonios(pro);
 
 
             }
@@ -186,7 +194,6 @@ public class MenuQawayFragment extends Fragment {
         });
 
 
-
         return vista;
     }
 
@@ -205,4 +212,6 @@ public class MenuQawayFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
 }
