@@ -23,6 +23,10 @@
         android:icon="@drawable/ic_location"
         android:title="Zonas en Cusco"></item>
     <item
+        android:id="@+id/sugerencia"
+        android:icon="@drawable/ic_send"
+        android:title="Enviar Sugerencia"></item>
+    <item
         android:id="@+id/salir"
         android:icon="@drawable/ic_close"
         android:title="Salir"></item>

@@ -33,6 +33,7 @@ import com.qaway.qawayapp.Fragments.LiteraturaFragment;
 import com.qaway.qawayapp.Fragments.MenuQawayFragment;
 import com.qaway.qawayapp.Fragments.MuseoFragment;
 import com.qaway.qawayapp.Fragments.PatrimoniosFragment;
+import com.qaway.qawayapp.Fragments.RegistrarSugerenciaFragment;
 import com.qaway.qawayapp.Fragments.TuristicosFragment;
 import com.qaway.qawayapp.Fragments.ZonasCuscoFragment;
 import com.qaway.qawayapp.Interfaces.IComunicaFragments;
@@ -128,6 +129,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentManager=getSupportFragmentManager();
             fragmentTransaction=fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.contenedor, new ZonasCuscoFragment());
+            fragmentTransaction.commit();
+        }
+        if (item.getItemId()==R.id.sugerencia){
+            //cargar fragmente acerca de app
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.contenedor, new RegistrarSugerenciaFragment());
             fragmentTransaction.commit();
         }
 
